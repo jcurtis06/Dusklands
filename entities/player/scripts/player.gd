@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 	# ATTACK
 	if Input.is_action_just_pressed("attack"):
 		attack.attack(1)
+		#world.block_grid.damage_block(get_global_mouse_position(), 1)
 	
 	# BUILD
 	if Input.is_action_just_pressed("interact"):

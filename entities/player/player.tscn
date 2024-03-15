@@ -34,7 +34,6 @@ shape = SubResource("RectangleShape2D_ojl01")
 [node name="AttackComponent" type="RayCast2D" parent="."]
 target_position = Vector2(128, 2.08165e-12)
 collide_with_areas = true
-collide_with_bodies = false
 script = ExtResource("5_rgh6a")
 attack_damage = 1
 look_at_mouse = true

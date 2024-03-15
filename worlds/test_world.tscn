@@ -11,14 +11,22 @@
 texture = ExtResource("1_txqsj")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lcwqd"]
 texture = ExtResource("3_u7mu5")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSet" id="TileSet_fcies"]
 tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "health"
+custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_x6vqu")
 sources/1 = SubResource("TileSetAtlasSource_lcwqd")
 
