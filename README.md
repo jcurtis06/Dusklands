@@ -12,6 +12,9 @@ Some planned features for the next big update
   - [x] Right click to place blocks
   - [x] Blocks are added to `TileMap`
   - [x] Blocks have health and can be destroyed
-- Simple enemy AI
+- Simple enemy AI 🤖
   - [ ] Enemy state machine
   - [ ] A* path finding
+- Polish ✨
+  - [ ] Sprites
+  - [ ] Hit flash effect
