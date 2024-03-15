@@ -6,7 +6,7 @@ Some planned features for the next big update
 
 #### Alpha 1.0.0
 - Basic player controls 👾
-  - [ ] 8-way movement
+  - [x] 8-way movement
   - [ ] Attacking enemies
 - Basic building mechanics 🔨
   - [ ] Right click to place blocks
