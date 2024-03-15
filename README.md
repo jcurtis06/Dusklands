@@ -4,7 +4,7 @@ A work in progress survival game set in remote Alaska. Devlogs will be released 
 ## Roadmap 🛣️
 Some planned features for the next big update
 
-#### Alpha 1.0.0
+#### Alpha v0.0.1
 - Basic player controls 👾
   - [x] 8-way movement
   - [ ] Attacking enemies
