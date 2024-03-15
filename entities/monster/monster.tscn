@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://2xww0ek01but"]
+
+[ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="1_gg6qf"]
+[ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="2_agwcc"]
+[ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="3_b84oc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byj8r"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im1hu"]
+size = Vector2(140, 140)
+
+[node name="Monster" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_byj8r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture = ExtResource("1_gg6qf")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_agwcc")]
+max_health = 5.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_b84oc")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_im1hu")

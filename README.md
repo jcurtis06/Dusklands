@@ -7,7 +7,7 @@ Some planned features for the next big update
 #### Alpha v0.0.1
 - Basic player controls 👾
   - [x] 8-way movement
-  - [ ] Attacking enemies
+  - [x] Attacking enemies
 - Basic building mechanics 🔨
   - [ ] Right click to place blocks
   - [ ] Blocks are added to `TileMap`
