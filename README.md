@@ -9,8 +9,8 @@ Some planned features for the next big update
   - [x] 8-way movement
   - [x] Attacking enemies
 - Basic building mechanics 🔨
-  - [ ] Right click to place blocks
-  - [ ] Blocks are added to `TileMap`
+  - [x] Right click to place blocks
+  - [x] Blocks are added to `TileMap`
   - [ ] Blocks have health and can be destroyed
 - Simple enemy AI
   - [ ] Enemy state machine
