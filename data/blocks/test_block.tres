@@ -6,3 +6,4 @@
 script = ExtResource("1_apqy5")
 atlas_id = 1
 atlas_position = Vector2i(0, 0)
+health = 3.0
