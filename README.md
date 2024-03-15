@@ -11,7 +11,7 @@ Some planned features for the next big update
 - Basic building mechanics 🔨
   - [x] Right click to place blocks
   - [x] Blocks are added to `TileMap`
-  - [ ] Blocks have health and can be destroyed
+  - [x] Blocks have health and can be destroyed
 - Simple enemy AI
   - [ ] Enemy state machine
   - [ ] A* path finding
