@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhubctfrt8pu4"]
+[gd_scene load_steps=9 format=3 uid="uid://bhubctfrt8pu4"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_gjsqj"]
+[ext_resource type="Resource" uid="uid://b0nlq13bq63fx" path="res://data/blocks/test_block.tres" id="2_ugxgv"]
 [ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="2_vbojf"]
 [ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="3_splgb"]
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="4_05clm"]
@@ -14,6 +15,7 @@ size = Vector2(140, 140)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_gjsqj")
+test_block = ExtResource("2_ugxgv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_vbojf")
