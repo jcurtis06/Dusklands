@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhubctfrt8pu4"]
+[gd_scene load_steps=8 format=3 uid="uid://bhubctfrt8pu4"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_gjsqj"]
 [ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="2_vbojf"]
-[ext_resource type="Script" path="res://entities/components/health/health_component.gd" id="3_angrn"]
-[ext_resource type="Script" path="res://entities/components/hitbox/hitbox_component.gd" id="4_2bt8y"]
+[ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="3_splgb"]
+[ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="4_05clm"]
+[ext_resource type="Script" path="res://entities/components/attack/attack_component.gd" id="5_rgh6a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxwle"]
 size = Vector2(128, 128)
@@ -20,14 +21,18 @@ texture = ExtResource("2_vbojf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nxwle")
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("3_angrn")
-max_health = 3.0
+[node name="HealthComponent" parent="." instance=ExtResource("3_splgb")]
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-script = ExtResource("4_2bt8y")
-health_component = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." instance=ExtResource("4_05clm")]
 
 [node name="HitboxCollider" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("RectangleShape2D_ojl01")
+
+[node name="AttackComponent" type="RayCast2D" parent="."]
+target_position = Vector2(128, 2.08165e-12)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("5_rgh6a")
+attack_damage = 1
+look_at_mouse = true
