@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://2xww0ek01but"]
+[gd_scene load_steps=12 format=3 uid="uid://2xww0ek01but"]
 
 [ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="1_gg6qf"]
+[ext_resource type="Script" path="res://entities/monster/monster.gd" id="1_uhuad"]
 [ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="2_agwcc"]
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="3_b84oc"]
+[ext_resource type="PackedScene" uid="uid://bj836l1l307ku" path="res://entities/components/attack/attack_component.tscn" id="4_jv472"]
+[ext_resource type="PackedScene" uid="uid://dso0ru2o6kteq" path="res://entities/components/state/state_machine.tscn" id="5_827uu"]
+[ext_resource type="Script" path="res://entities/ai_states/wander.gd" id="6_byb43"]
+[ext_resource type="Script" path="res://entities/ai_states/follow.gd" id="7_u4hn5"]
+[ext_resource type="Script" path="res://entities/ai_states/attack.gd" id="9_pyexa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byj8r"]
 size = Vector2(128, 128)
@@ -11,6 +17,7 @@ size = Vector2(128, 128)
 size = Vector2(140, 140)
 
 [node name="Monster" type="CharacterBody2D"]
+script = ExtResource("1_uhuad")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_byj8r")
@@ -22,8 +29,42 @@ texture = ExtResource("1_gg6qf")
 [node name="HealthComponent" parent="." instance=ExtResource("2_agwcc")]
 max_health = 5.0
 
+[node name="AttackComponent" parent="." instance=ExtResource("4_jv472")]
+target_position = Vector2(200, 2.08165e-12)
+look_at_mouse = false
+
+[node name="Line2D" type="Line2D" parent="AttackComponent"]
+points = PackedVector2Array(0, 2, 128, 1)
+default_color = Color(0, 0, 0, 1)
+
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_b84oc")]
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_im1hu")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_827uu")]
+initial_state = NodePath("EntityWander")
+
+[node name="EntityWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "follow_state")]
+script = ExtResource("6_byb43")
+cb2d = NodePath("../..")
+speed = 100.0
+follow_state = NodePath("../EntityFollow")
+
+[node name="EntityFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d")]
+script = ExtResource("7_u4hn5")
+cb2d = NodePath("../..")
+target_group = "Player"
+speed = 100.0
+
+[node name="EntityAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "attack_component")]
+script = ExtResource("9_pyexa")
+cb2d = NodePath("../..")
+target_group = "Player"
+attack_component = NodePath("../../AttackComponent")
+attack_cooldown = 1.0
+
+[connection signal="lost_sight" from="StateMachine/EntityFollow" to="." method="_on_entity_follow_lost_sight"]
+[connection signal="reached_dest" from="StateMachine/EntityFollow" to="." method="_on_entity_follow_reached_dest"]
+[connection signal="out_of_range" from="StateMachine/EntityAttack" to="." method="_on_entity_attack_out_of_range"]

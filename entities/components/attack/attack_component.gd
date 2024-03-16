@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func attack(amount: float) -> void:
 	if !is_colliding():
+		print("not colliding")
 		return
 	
 	if get_collider() is HitboxComponent:

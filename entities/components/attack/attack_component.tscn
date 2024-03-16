@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj836l1l307ku"]
+
+[ext_resource type="Script" path="res://entities/components/attack/attack_component.gd" id="1_l4yyd"]
+
+[node name="AttackComponent" type="RayCast2D"]
+target_position = Vector2(128, 2.08165e-12)
+collide_with_areas = true
+script = ExtResource("1_l4yyd")
+attack_damage = 1
+look_at_mouse = true
