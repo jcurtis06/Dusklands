@@ -13,7 +13,7 @@ Some planned features for the next big update
   - [x] Blocks are added to `TileMap`
   - [x] Blocks have health and can be destroyed
 - Simple enemy AI 🤖
-  - [ ] Enemy state machine
+  - [x] Enemy state machine
   - [ ] A* path finding
 - Polish ✨
   - [ ] Sprites
