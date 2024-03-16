@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2xww0ek01but"]
+[gd_scene load_steps=13 format=3 uid="uid://2xww0ek01but"]
 
 [ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="1_gg6qf"]
 [ext_resource type="Script" path="res://entities/monster/monster.gd" id="1_uhuad"]
@@ -6,25 +6,28 @@
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="3_b84oc"]
 [ext_resource type="PackedScene" uid="uid://bj836l1l307ku" path="res://entities/components/attack/attack_component.tscn" id="4_jv472"]
 [ext_resource type="PackedScene" uid="uid://dso0ru2o6kteq" path="res://entities/components/state/state_machine.tscn" id="5_827uu"]
+[ext_resource type="PackedScene" uid="uid://d35ffkbuwmwpe" path="res://entities/components/pathfinding/pathfinding_component.tscn" id="6_8pat7"]
 [ext_resource type="Script" path="res://entities/ai_states/wander.gd" id="6_byb43"]
 [ext_resource type="Script" path="res://entities/ai_states/follow.gd" id="7_u4hn5"]
 [ext_resource type="Script" path="res://entities/ai_states/attack.gd" id="9_pyexa"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_byj8r"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pvvs"]
+radius = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im1hu"]
 size = Vector2(140, 140)
 
 [node name="Monster" type="CharacterBody2D"]
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_uhuad")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_byj8r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
 texture = ExtResource("1_gg6qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8pvvs")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_agwcc")]
 max_health = 5.0
@@ -33,28 +36,30 @@ max_health = 5.0
 target_position = Vector2(200, 2.08165e-12)
 look_at_mouse = false
 
-[node name="Line2D" type="Line2D" parent="AttackComponent"]
-points = PackedVector2Array(0, 2, 128, 1)
-default_color = Color(0, 0, 0, 1)
-
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_b84oc")]
+visible = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_im1hu")
 
+[node name="PathfindingComponent" parent="." node_paths=PackedStringArray("cb2d") instance=ExtResource("6_8pat7")]
+cb2d = NodePath("..")
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_827uu")]
 initial_state = NodePath("EntityWander")
 
-[node name="EntityWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "follow_state")]
+[node name="EntityWander" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "pathfinding", "follow_state")]
 script = ExtResource("6_byb43")
 cb2d = NodePath("../..")
+pathfinding = NodePath("../../PathfindingComponent")
 speed = 100.0
 follow_state = NodePath("../EntityFollow")
 
-[node name="EntityFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d")]
+[node name="EntityFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "pathfinding")]
 script = ExtResource("7_u4hn5")
 cb2d = NodePath("../..")
+pathfinding = NodePath("../../PathfindingComponent")
 target_group = "Player"
 speed = 100.0
 

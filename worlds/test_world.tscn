@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq5d3vx2jsqp8"]
+[gd_scene load_steps=11 format=3 uid="uid://bq5d3vx2jsqp8"]
 
 [ext_resource type="Texture2D" uid="uid://bdf6qv3hg1g6h" path="res://placeholder.png" id="1_txqsj"]
 [ext_resource type="Script" path="res://worlds/scripts/world.gd" id="1_yao1a"]
@@ -7,12 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://2xww0ek01but" path="res://entities/monster/monster.tscn" id="3_1lajv"]
 [ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="3_u7mu5"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6lsl3"]
+vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x6vqu"]
 texture = ExtResource("1_txqsj")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6lsl3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lcwqd"]
 texture = ExtResource("3_u7mu5")
@@ -25,6 +33,7 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_fcies"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 custom_data_layer_0/name = "health"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_x6vqu")

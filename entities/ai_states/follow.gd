@@ -5,6 +5,8 @@ signal reached_dest(state: EntityFollow)
 signal lost_sight(state: EntityFollow)
 
 @export var cb2d: CharacterBody2D
+@export var pathfinding: PathfindingComponent
+
 @export var target_group: String
 @export var speed: float
 @export var min_dist: float = 200.0
@@ -25,7 +27,10 @@ func physics_update(delta: float) -> void:
 		return
 	
 	if direction.length() > min_dist:
-		cb2d.velocity = direction.normalized() * speed
+		if pathfinding:
+			pathfinding.set_destination(target_node.global_position)
+		else:
+			cb2d.velocity = direction.normalized() * speed
 	else:
 		reached_dest.emit(self)
 		cb2d.velocity = Vector2.ZERO
