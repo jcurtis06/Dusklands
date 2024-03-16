@@ -6,3 +6,4 @@ class_name HitboxComponent
 func damage(amount: float) -> void:
 	if health_component:
 		health_component.deduct(amount)
+		print("damaged: " + get_parent().name)

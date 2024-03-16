@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d35ffkbuwmwpe"]
+
+[ext_resource type="Script" path="res://entities/components/pathfinding/pathfinding_component.gd" id="1_bad2g"]
+
+[node name="PathfindingComponent" type="NavigationAgent2D" node_paths=PackedStringArray("cb2d")]
+path_max_distance = 500.0
+radius = 128.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 0, 1, 1)
+script = ExtResource("1_bad2g")
+cb2d = NodePath("")
+speed = 100.0
