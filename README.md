@@ -14,7 +14,7 @@ Some planned features for the next big update
   - [x] Blocks have health and can be destroyed
 - Simple enemy AI 🤖
   - [x] Enemy state machine
-  - [ ] A* path finding
+  - [x] A* path finding
 - Polish ✨
   - [ ] Sprites
   - [ ] Hit flash effect
