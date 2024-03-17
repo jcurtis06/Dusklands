@@ -20,9 +20,11 @@ Some planned features for the next big update
   - [x] Plains tileset
   - [x] Enemy sprites
   - [x] Cobblestone block
+  - [x] Knockback
+  - [x] Flash effect
 - Game loop 🔁 
-  - [ ] Day-night cycle
-  - [ ] Monster spawning
+  - [x] Day-night cycle
+  - [x] Monster spawning
 - UI 🔲
   - [ ] Player health
   - [ ] Enemy health
