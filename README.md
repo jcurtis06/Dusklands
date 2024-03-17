@@ -16,8 +16,13 @@ Some planned features for the next big update
   - [x] Enemy state machine
   - [x] A* path finding
 - Polish ✨
-  - [ ] Player sprites
-  - [ ] Plains tileset
-  - [ ] Enemy sprites
-  - [ ] Cobblestone block
- 
+  - [x] Player sprites
+  - [x] Plains tileset
+  - [x] Enemy sprites
+  - [x] Cobblestone block
+- Game loop 🔁 
+  - [ ] Day-night cycle
+  - [ ] Monster spawning
+- UI 🔲
+  - [ ] Player health
+  - [ ] Enemy health
