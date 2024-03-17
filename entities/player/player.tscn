@@ -1,35 +1,108 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhubctfrt8pu4"]
+[gd_scene load_steps=18 format=3 uid="uid://bhubctfrt8pu4"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_gjsqj"]
 [ext_resource type="Resource" uid="uid://b0nlq13bq63fx" path="res://data/blocks/test_block.tres" id="2_ugxgv"]
-[ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="2_vbojf"]
+[ext_resource type="Shader" path="res://assets/fx/flash.gdshader" id="3_0kl0i"]
+[ext_resource type="Texture2D" uid="uid://qnaqimrrqgwl" path="res://assets/entity_sprites/player.png" id="3_746df"]
 [ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="3_splgb"]
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="4_05clm"]
 [ext_resource type="PackedScene" uid="uid://bj836l1l307ku" path="res://entities/components/attack/attack_component.tscn" id="6_s472d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxwle"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kx1h"]
+radius = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhlnq"]
+shader = ExtResource("3_0kl0i")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emxoe"]
+atlas = ExtResource("3_746df")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d65x"]
+atlas = ExtResource("3_746df")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_375gh"]
+atlas = ExtResource("3_746df")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nn2lt"]
+atlas = ExtResource("3_746df")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7nui"]
+atlas = ExtResource("3_746df")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v38n3"]
+atlas = ExtResource("3_746df")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sao1l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emxoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d65x")
+}],
+"loop": false,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_375gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nn2lt")
+}],
+"loop": false,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7nui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v38n3")
+}],
+"loop": false,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojl01"]
-size = Vector2(140, 140)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_gjsqj")
+speed = 100.0
 test_block = ExtResource("2_ugxgv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_vbojf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nxwle")
+shape = SubResource("CircleShape2D_4kx1h")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_hhlnq")
+sprite_frames = SubResource("SpriteFrames_sao1l")
+animation = &"walk_down"
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_splgb")]
+max_health = 5.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_05clm")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "flashable_sprite") instance=ExtResource("4_05clm")]
 health_component = NodePath("../HealthComponent")
+flashable_sprite = NodePath("../Sprite")
 
 [node name="HitboxCollider" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("RectangleShape2D_ojl01")
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_s472d")]
+target_position = Vector2(16, 2.08165e-12)
+
+[node name="Camera2D" type="Camera2D" parent="."]
