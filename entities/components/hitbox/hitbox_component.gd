@@ -11,7 +11,7 @@ func damage(amount: float, from: Vector2) -> void:
 		print(get_parent().name + " got hit!")
 	
 	if cb2d:
-		# KNOCKBACK
+		# KNOCKBACK WIP
 		var knockback_direction = (cb2d.global_position - from).normalized()
 		apply_knockback(knockback_direction)
 	
@@ -22,5 +22,6 @@ func damage(amount: float, from: Vector2) -> void:
 		shader.set_shader_parameter("active", false)
 
 func apply_knockback(direction: Vector2) -> void:
+	# TODO: Make this smoother
 	var knockback_force = direction * 50
 	cb2d.global_position += knockback_force
