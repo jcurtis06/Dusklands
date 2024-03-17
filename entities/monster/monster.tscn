@@ -102,7 +102,8 @@ max_health = 5.0
 target_position = Vector2(16, 2.08165e-12)
 look_at_mouse = false
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "flashable_sprite") instance=ExtResource("3_b84oc")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("cb2d", "health_component", "flashable_sprite") instance=ExtResource("3_b84oc")]
+cb2d = NodePath("..")
 health_component = NodePath("../HealthComponent")
 flashable_sprite = NodePath("../Sprite")
 
