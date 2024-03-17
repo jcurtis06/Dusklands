@@ -94,7 +94,8 @@ animation = &"walk_down"
 [node name="HealthComponent" parent="." instance=ExtResource("3_splgb")]
 max_health = 5.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "flashable_sprite") instance=ExtResource("4_05clm")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("cb2d", "health_component", "flashable_sprite") instance=ExtResource("4_05clm")]
+cb2d = NodePath("..")
 health_component = NodePath("../HealthComponent")
 flashable_sprite = NodePath("../Sprite")
 
