@@ -16,5 +16,8 @@ Some planned features for the next big update
   - [x] Enemy state machine
   - [x] A* path finding
 - Polish ✨
-  - [ ] Sprites
-  - [ ] Hit flash effect
+  - [ ] Player sprites
+  - [ ] Plains tileset
+  - [ ] Enemy sprites
+  - [ ] Cobblestone block
+ 
