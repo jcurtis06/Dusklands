@@ -38,9 +38,12 @@ custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_x6vqu")
 sources/1 = SubResource("TileSetAtlasSource_lcwqd")
 
-[node name="TestWorld" type="Node2D" node_paths=PackedStringArray("block_grid")]
+[node name="TestWorld" type="Node2D" node_paths=PackedStringArray("block_grid", "player")]
 script = ExtResource("1_yao1a")
 block_grid = NodePath("BlockGrid")
+player = NodePath("Player")
+safety_radius = 72.0
+max_radius = 512.0
 
 [node name="BlockGrid" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_fcies")
