@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhubctfrt8pu4"]
+[gd_scene load_steps=18 format=3 uid="uid://bhubctfrt8pu4"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_gjsqj"]
 [ext_resource type="Resource" uid="uid://b0nlq13bq63fx" path="res://data/blocks/test_block.tres" id="2_ugxgv"]
+[ext_resource type="Shader" path="res://assets/fx/flash.gdshader" id="3_0kl0i"]
 [ext_resource type="Texture2D" uid="uid://qnaqimrrqgwl" path="res://assets/entity_sprites/player.png" id="3_746df"]
 [ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="3_splgb"]
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="4_05clm"]
@@ -9,6 +10,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kx1h"]
 radius = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhlnq"]
+shader = ExtResource("3_0kl0i")
+shader_parameter/active = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emxoe"]
 atlas = ExtResource("3_746df")
@@ -82,14 +87,16 @@ test_block = ExtResource("2_ugxgv")
 shape = SubResource("CircleShape2D_4kx1h")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_hhlnq")
 sprite_frames = SubResource("SpriteFrames_sao1l")
 animation = &"walk_down"
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_splgb")]
 max_health = 5.0
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_05clm")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "flashable_sprite") instance=ExtResource("4_05clm")]
 health_component = NodePath("../HealthComponent")
+flashable_sprite = NodePath("../Sprite")
 
 [node name="HitboxCollider" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(2.08165e-12, 2.08165e-12)

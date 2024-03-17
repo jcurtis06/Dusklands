@@ -4,16 +4,21 @@ class_name BlockGrid
 ## DATA GRID
 ## - Key: Vector2i
 ## - Value: BlockData
-var data_grid = {}
+var data_grid: Dictionary = {}
 
 func set_block_at(pos: Vector2, block: BlockData) -> void:
 	var map_pos = local_to_map(pos)
 	set_cell(0, map_pos, block.atlas_id, block.atlas_position)
 	
 	data_grid[map_pos] = block.duplicate()
+	print("set block @", map_pos, data_grid[map_pos])
 
 func damage_block(pos: Vector2, amount: float) -> void:
 	var data = get_block_data(pos)
+	
+	if data == null:
+		return
+	
 	var new_health = data.health - amount
 	
 	if new_health <= 0:
@@ -29,7 +34,11 @@ func get_position_snapped(in_pos: Vector2) -> Vector2:
 
 func get_block_data(pos: Vector2) -> BlockData:
 	var map_pos = local_to_map(pos)
-	return data_grid[map_pos]
+	print("damaging block @ ", map_pos)
+	if data_grid.has(map_pos):
+		return data_grid[map_pos]
+	else:
+		return null
 
 func clear_block_data(pos: Vector2) -> void:
 	var map_pos = local_to_map(pos)

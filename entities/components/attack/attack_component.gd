@@ -18,12 +18,11 @@ func attack(amount: float) -> void:
 	
 	if get_collider() is HitboxComponent:
 		var hitbox = get_collider() as HitboxComponent
-		print("hit a hitbox")
 		hitbox.damage(attack_damage)
 	
 	if get_collider() is BlockGrid:
 		var bg = get_collider() as BlockGrid
-		var pos = get_collision_point()
+		var pos = get_collision_point() - get_collision_normal()
 		bg.damage_block(pos, attack_damage)
 
 func _unhandled_input(event: InputEvent) -> void:

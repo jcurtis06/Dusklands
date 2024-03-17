@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdf6qv3hg1g6h"
-path="res://.godot/imported/placeholder.png-ef21141e6f7fef7ccb4b638348400c3b.ctex"
+uid="uid://cre65nyxu1ic5"
+path="res://.godot/imported/plains_tileset.png-1c2c3a9c88f1b521575d611dcfa77ce2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://placeholder.png"
-dest_files=["res://.godot/imported/placeholder.png-ef21141e6f7fef7ccb4b638348400c3b.ctex"]
+source_file="res://assets/world/plains_tileset.png"
+dest_files=["res://.godot/imported/plains_tileset.png-1c2c3a9c88f1b521575d611dcfa77ce2.ctex"]
 
 [params]
 
