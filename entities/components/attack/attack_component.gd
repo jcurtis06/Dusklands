@@ -18,7 +18,7 @@ func attack(amount: float) -> void:
 	
 	if get_collider() is HitboxComponent:
 		var hitbox = get_collider() as HitboxComponent
-		hitbox.damage(attack_damage)
+		hitbox.damage(attack_damage, global_position)
 	
 	if get_collider() is BlockGrid:
 		var bg = get_collider() as BlockGrid
