@@ -50,7 +50,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 0, 131072, 0, 0, 196608,
 script = ExtResource("2_72ntq")
 
 [node name="Player" parent="." instance=ExtResource("2_h2nlv")]
-position = Vector2(164, 361)
+position = Vector2(147, 86)
 
 [node name="Monster" parent="." instance=ExtResource("3_1lajv")]
-position = Vector2(920, 341)
+position = Vector2(76, 52)

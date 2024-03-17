@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="4_05clm"]
 [ext_resource type="PackedScene" uid="uid://bj836l1l307ku" path="res://entities/components/attack/attack_component.tscn" id="6_s472d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nxwle"]
-size = Vector2(128, 128)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kx1h"]
+radius = 7.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_emxoe"]
 atlas = ExtResource("3_746df")
@@ -71,24 +71,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ojl01"]
-size = Vector2(140, 140)
+size = Vector2(16, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_gjsqj")
+speed = 100.0
 test_block = ExtResource("2_ugxgv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("RectangleShape2D_nxwle")
+shape = SubResource("CircleShape2D_4kx1h")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_sao1l")
 animation = &"walk_down"
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_splgb")]
+max_health = 5.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_05clm")]
-visible = false
 health_component = NodePath("../HealthComponent")
 
 [node name="HitboxCollider" type="CollisionShape2D" parent="HitboxComponent"]
@@ -96,6 +96,6 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 shape = SubResource("RectangleShape2D_ojl01")
 
 [node name="AttackComponent" parent="." instance=ExtResource("6_s472d")]
+target_position = Vector2(16, 2.08165e-12)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)

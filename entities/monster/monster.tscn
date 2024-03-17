@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://2xww0ek01but"]
+[gd_scene load_steps=22 format=3 uid="uid://2xww0ek01but"]
 
-[ext_resource type="Texture2D" uid="uid://if2cw0jqaor8" path="res://icon.svg" id="1_gg6qf"]
 [ext_resource type="Script" path="res://entities/monster/monster.gd" id="1_uhuad"]
 [ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="2_agwcc"]
+[ext_resource type="Shader" path="res://assets/fx/flash.gdshader" id="2_hh5jb"]
+[ext_resource type="Texture2D" uid="uid://fa5pmcvv6uur" path="res://assets/entity_sprites/enemy.png" id="2_yrps8"]
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="3_b84oc"]
 [ext_resource type="PackedScene" uid="uid://bj836l1l307ku" path="res://entities/components/attack/attack_component.tscn" id="4_jv472"]
 [ext_resource type="PackedScene" uid="uid://dso0ru2o6kteq" path="res://entities/components/state/state_machine.tscn" id="5_827uu"]
@@ -12,33 +13,98 @@
 [ext_resource type="Script" path="res://entities/ai_states/attack.gd" id="9_pyexa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8pvvs"]
-radius = 16.0
+radius = 7.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2vnl"]
+shader = ExtResource("2_hh5jb")
+shader_parameter/active = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqb88"]
+atlas = ExtResource("2_yrps8")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwt2"]
+atlas = ExtResource("2_yrps8")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fij2v"]
+atlas = ExtResource("2_yrps8")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lb1v"]
+atlas = ExtResource("2_yrps8")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0u26"]
+atlas = ExtResource("2_yrps8")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fmm5"]
+atlas = ExtResource("2_yrps8")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vnplp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqb88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cwt2")
+}],
+"loop": false,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fij2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lb1v")
+}],
+"loop": false,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0u26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fmm5")
+}],
+"loop": false,
+"name": &"walk_up",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im1hu"]
-size = Vector2(140, 140)
+size = Vector2(16, 16)
 
 [node name="Monster" type="CharacterBody2D"]
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_uhuad")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0, 0, 1)
-texture = ExtResource("1_gg6qf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8pvvs")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_t2vnl")
+sprite_frames = SubResource("SpriteFrames_vnplp")
+animation = &"walk_down"
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_agwcc")]
 max_health = 5.0
 
 [node name="AttackComponent" parent="." instance=ExtResource("4_jv472")]
-target_position = Vector2(200, 2.08165e-12)
+target_position = Vector2(16, 2.08165e-12)
 look_at_mouse = false
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_b84oc")]
-visible = false
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component", "flashable_sprite") instance=ExtResource("3_b84oc")]
 health_component = NodePath("../HealthComponent")
+flashable_sprite = NodePath("../Sprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_im1hu")
@@ -53,7 +119,9 @@ initial_state = NodePath("EntityWander")
 script = ExtResource("6_byb43")
 cb2d = NodePath("../..")
 pathfinding = NodePath("../../PathfindingComponent")
-speed = 100.0
+speed = 50.0
+min_radius = 50.0
+max_radius = 100.0
 follow_state = NodePath("../EntityFollow")
 
 [node name="EntityFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "pathfinding")]
@@ -61,7 +129,9 @@ script = ExtResource("7_u4hn5")
 cb2d = NodePath("../..")
 pathfinding = NodePath("../../PathfindingComponent")
 target_group = "Player"
-speed = 100.0
+speed = 50.0
+min_dist = 16.0
+max_dist = 128.0
 
 [node name="EntityAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("cb2d", "attack_component")]
 script = ExtResource("9_pyexa")
@@ -69,6 +139,7 @@ cb2d = NodePath("../..")
 target_group = "Player"
 attack_component = NodePath("../../AttackComponent")
 attack_cooldown = 1.0
+attack_range = 24.0
 
 [connection signal="lost_sight" from="StateMachine/EntityFollow" to="." method="_on_entity_follow_lost_sight"]
 [connection signal="reached_dest" from="StateMachine/EntityFollow" to="." method="_on_entity_follow_reached_dest"]

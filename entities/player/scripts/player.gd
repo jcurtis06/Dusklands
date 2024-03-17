@@ -43,10 +43,3 @@ func _handle_animations() -> void:
 	else:
 		animation.flip_h = true
 		animation.play("walk_right")
-	
-	#if velocity.y < 0:
-		#print("walking up")
-		#animation.play("walk_up")
-	#elif velocity.y > 0:
-		#print("walking down")
-		#animation.play("walk_down")

@@ -20,11 +20,13 @@ func update(delta: float) -> void:
 		var dist_to_target = cb2d.global_position.distance_to(target.global_position)
 		
 		if dist_to_target > attack_range:
+			print("TOO FARRRR")
 			out_of_range.emit(self)
 	else:
 		reset()
 	
 	if cooldown > 0:
+		cb2d.velocity = Vector2.ZERO
 		cooldown -= delta
 	else:
 		attack_component.attack(1)
