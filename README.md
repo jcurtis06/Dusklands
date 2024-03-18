@@ -25,6 +25,9 @@ Some planned features for the next big update
 - Game loop 🔁 
   - [x] Day-night cycle
   - [x] Monster spawning
+  - [ ] Inventory system
+  - [ ] Item pickup
 - UI 🔲
   - [ ] Player health
   - [ ] Enemy health
+  - [ ] Hotbar
