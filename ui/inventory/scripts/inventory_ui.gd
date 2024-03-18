@@ -11,6 +11,9 @@ func _ready() -> void:
 		visible = false
 
 func _process(delta: float) -> void:
+	if showing == null:
+		return
+		
 	if showing.ui_refresh:
 		update_view()
 		showing.ui_refresh = false

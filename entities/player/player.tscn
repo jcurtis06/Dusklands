@@ -1,14 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bhubctfrt8pu4"]
+[gd_scene load_steps=21 format=3 uid="uid://bhubctfrt8pu4"]
 
 [ext_resource type="Script" path="res://entities/player/scripts/player.gd" id="1_gjsqj"]
-[ext_resource type="Resource" uid="uid://b0nlq13bq63fx" path="res://data/blocks/test_block.tres" id="2_ugxgv"]
+[ext_resource type="Resource" uid="uid://clyxk5gl7h2gi" path="res://data/blocks/stone.tres" id="2_l0x22"]
 [ext_resource type="Shader" path="res://assets/fx/flash.gdshader" id="3_0kl0i"]
-[ext_resource type="Resource" uid="uid://djyfqxxh4a8p3" path="res://data/inventories/test.tres" id="3_6x8k7"]
-[ext_resource type="Resource" uid="uid://c72rvacah4qni" path="res://data/inventories/player_hotbar.tres" id="3_7gb4j"]
+[ext_resource type="Resource" uid="uid://dhuey6wiwu1dk" path="res://data/inventories/player_hotbar.tres" id="3_7gb4j"]
 [ext_resource type="Texture2D" uid="uid://qnaqimrrqgwl" path="res://assets/entity_sprites/player.png" id="3_746df"]
 [ext_resource type="PackedScene" uid="uid://cvq6j5si02c24" path="res://entities/components/health/health_component.tscn" id="3_splgb"]
 [ext_resource type="PackedScene" uid="uid://dx0wp3ow80irn" path="res://entities/components/hitbox/hitbox_component.tscn" id="4_05clm"]
-[ext_resource type="Resource" uid="uid://daxsla5dyfu3e" path="res://data/inventories/test_b.tres" id="4_542x2"]
 [ext_resource type="PackedScene" uid="uid://bj836l1l307ku" path="res://entities/components/attack/attack_component.tscn" id="6_s472d"]
 [ext_resource type="PackedScene" uid="uid://b3ovkic6m3adi" path="res://ui/inventory/inventory_slot.tscn" id="8_s47uf"]
 [ext_resource type="Script" path="res://ui/inventory/scripts/inventory_ui.gd" id="9_7k1qo"]
@@ -86,9 +84,7 @@ size = Vector2(16, 16)
 [node name="Player" type="CharacterBody2D" groups=["CanPickup", "Player"]]
 script = ExtResource("1_gjsqj")
 speed = 100.0
-test_block = ExtResource("2_ugxgv")
-test_item = ExtResource("3_6x8k7")
-test_item_b = ExtResource("4_542x2")
+test_block = ExtResource("2_l0x22")
 hotbar = ExtResource("3_7gb4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
