@@ -24,11 +24,10 @@ func damage_block(pos: Vector2, amount: float) -> void:
 	
 	if new_health <= 0:
 		# TODO: drop item
-		if data.item_stack:
-			var dropped_item = dropped_item_tscn.instantiate() as DroppedItem
-			dropped_item.global_position = get_position_snapped(pos)
-			dropped_item.item = data.item_stack
-			add_child(dropped_item)
+		var dropped_item = dropped_item_tscn.instantiate() as DroppedItem
+		dropped_item.global_position = get_position_snapped(pos)
+		dropped_item.item = data
+		add_child(dropped_item)
 		
 		delete_cell(pos)
 		return

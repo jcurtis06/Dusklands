@@ -1,14 +1,14 @@
 extends Sprite2D
 class_name DroppedItem
 
-@export var item: ItemStack
+@export var item: BlockData
 @export var speed: float = 50
 
 var target: Node2D
 
 func _ready() -> void:
-	if item && item.texture:
-		texture = item.texture
+	if item && item.item_texture:
+		texture = item.item_texture
 		set_process(true)
 
 func _process(delta: float) -> void:

@@ -56,6 +56,7 @@ script = ExtResource("2_72ntq")
 position = Vector2(147, 86)
 
 [node name="DayNightCycle" type="CanvasModulate" parent="."]
+visible = false
 script = ExtResource("7_vmqve")
 gradient = ExtResource("8_qvpk1")
 
