@@ -7,3 +7,4 @@ class_name BlockData
 
 @export_category("Block Data")
 @export var health: float = 0
+@export var item_stack: ItemStack

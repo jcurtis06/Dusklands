@@ -25,7 +25,7 @@ func attack(amount: float) -> void:
 		var pos = get_collision_point() - get_collision_normal()
 		bg.damage_block(pos, attack_damage)
 
-func _unhandled_input(event: InputEvent) -> void:
+func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 
 func _on_slash_effect_animation_finished() -> void:

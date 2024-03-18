@@ -1,8 +1,16 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://c72rvacah4qni"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=5 format=3 uid="uid://dhuey6wiwu1dk"]
 
 [ext_resource type="Script" path="res://data/inventories/scripts/inventory.gd" id="1_vqea0"]
-[ext_resource type="Resource" uid="uid://djyfqxxh4a8p3" path="res://data/inventories/test.tres" id="2_tandr"]
+[ext_resource type="Script" path="res://data/item_stacks/scripts/item_stack.gd" id="2_1n84r"]
+[ext_resource type="Texture2D" uid="uid://dgytvu4wd0682" path="res://ash.png" id="3_hy51n"]
+
+[sub_resource type="Resource" id="Resource_k5jv1"]
+script = ExtResource("2_1n84r")
+texture = ExtResource("3_hy51n")
+count = 1
+name = "Ash"
+material = 0
 
 [resource]
 script = ExtResource("1_vqea0")
-slots = Array[Resource("res://data/inventories/scripts/item_stack.gd")]([ExtResource("2_tandr"), null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("2_1n84r")]([SubResource("Resource_k5jv1"), null, null, null, null, null, null, null, null])

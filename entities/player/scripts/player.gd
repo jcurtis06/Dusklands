@@ -36,6 +36,9 @@ func _physics_process(delta: float) -> void:
 	# ANIMATIONS
 	_handle_animations()
 
+func pickup_item(item: ItemStack) -> void:
+	hotbar.add_item(item)
+
 func _handle_animations() -> void:
 	if velocity.is_zero_approx():
 		return

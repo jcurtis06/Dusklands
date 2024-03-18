@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemStack" load_steps=3 format=3 uid="uid://b3cgyie0og818"]
+
+[ext_resource type="Script" path="res://data/item_stacks/scripts/item_stack.gd" id="1_iwddq"]
+[ext_resource type="Texture2D" uid="uid://c63cp4yl0cj83" path="res://assets/blocks/blocks_tileset.png" id="2_cjfpi"]
+
+[resource]
+script = ExtResource("1_iwddq")
+texture = ExtResource("2_cjfpi")
+count = 1
+name = "Stone"
+material = 1
