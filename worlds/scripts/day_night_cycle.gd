@@ -9,7 +9,7 @@ var time: float = 0.0
 var night = false
 
 func _process(delta: float) -> void:
-	time += delta * 0.5
+	time += delta * 0.1
 	var value = (sin(time - PI / 2) + 1.0) / 2.0
 	color = gradient.gradient.sample(value)
 	
