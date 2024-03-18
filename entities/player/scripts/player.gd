@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @export var speed: float = 300.0
 @export var test_block: BlockData
+@export var test_item: ItemStack
+@export var test_item_b: ItemStack
+@export var hotbar: Inventory
 
 @onready var world: World = get_parent()
 @onready var attack := $AttackComponent
@@ -17,6 +20,14 @@ func _physics_process(delta: float) -> void:
 	# ATTACK
 	if Input.is_action_just_pressed("attack"):
 		attack.attack(1)
+	
+	# TEMPORARY
+	if Input.is_action_just_pressed("ui_accept"):
+		hotbar.add_item(test_item)
+	
+	# TEMPORARY
+	if Input.is_action_just_pressed("ui_text_backspace"):
+		hotbar.add_item(test_item_b)
 	
 	# BUILD
 	if Input.is_action_just_pressed("interact"):
