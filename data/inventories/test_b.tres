@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemStack" load_steps=3 format=3 uid="uid://daxsla5dyfu3e"]
+
+[ext_resource type="Script" path="res://data/inventories/scripts/item_stack.gd" id="1_vq60f"]
+[ext_resource type="Texture2D" uid="uid://c63cp4yl0cj83" path="res://assets/blocks/blocks_tileset.png" id="2_4qlsb"]
+
+[resource]
+script = ExtResource("1_vq60f")
+texture = ExtResource("2_4qlsb")
+count = 1
+name = "Cobblestone"
+material = 1

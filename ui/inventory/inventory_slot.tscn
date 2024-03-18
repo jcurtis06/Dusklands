@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ovkic6m3adi"]
+
+[ext_resource type="Script" path="res://ui/inventory/scripts/inventory_slot.gd" id="1_pggrx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb4po"]
+
+[node name="InventorySlot" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hb4po")
+script = ExtResource("1_pggrx")
+
+[node name="Display" type="Sprite2D" parent="."]
+centered = false
+
+[node name="Count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -19.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 2
+justification_flags = 0
