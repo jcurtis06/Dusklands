@@ -26,7 +26,7 @@ Some planned features for the next big update
   - [x] Day-night cycle
   - [x] Monster spawning
   - [x] Inventory system
-  - [ ] Item pickup
+  - [x] Item pickup
   - [ ] Infinite terrain generation
   - [ ] Basic crafting system
 - Items
