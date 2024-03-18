@@ -27,7 +27,20 @@ Some planned features for the next big update
   - [x] Monster spawning
   - [x] Inventory system
   - [ ] Item pickup
+  - [ ] Infinite terrain generation
+  - [ ] Basic crafting system
+- Items
+  - [ ] Sword
+  - [ ] Stick
+  - [ ] Plant fiber
+- Blocks
+  - [ ] Planks
+  - [ ] Stone
+  - [ ] Wood
+  - [ ] Door
+  - [ ] Fire
 - UI 🔲
   - [ ] Player health
   - [ ] Enemy health
   - [x] Hotbar
+  - [ ] Crafting menu
