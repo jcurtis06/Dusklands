@@ -6,7 +6,6 @@
 radius = 64.0
 
 [node name="DroppedItem" type="Sprite2D"]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_ort54")
 
 [node name="Area2D" type="Area2D" parent="."]

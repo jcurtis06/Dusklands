@@ -9,8 +9,10 @@ class_name WorldGen
 @export_category("Blocks")
 @export var land: BlockData
 @export var cliffs: BlockData
+@export var water: BlockData
 
 var noise: Noise
+var cells: Array[Vector2] = []
 
 func _ready() -> void:
 	noise = noise_height_texture.noise
@@ -22,8 +24,10 @@ func generate_world() -> void:
 			var noise_val = noise.get_noise_2d(x, y)
 			var pos = Vector2i(x, y)
 			
-			if noise_val >= 0.0:
+			if noise_val < 0.1:
+				block_grid.set_block_at_map(pos, water, 0)
+				cells.append(Vector2(pos))
+			if noise_val >= 0.1:
 				block_grid.set_block_at_map(pos, land, 0)
 			if noise_val >= 0.4:
-				print("placed cliffs")
 				block_grid.set_block_at_map(pos, cliffs)

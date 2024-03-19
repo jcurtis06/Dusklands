@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=3 format=3 uid="uid://bq1dlpwo2rnus"]
+
+[ext_resource type="Texture2D" uid="uid://bsnu0a34i7lg4" path="res://assets/items/flower.png" id="1_grvtf"]
+[ext_resource type="Script" path="res://data/blocks/scripts/block_data.gd" id="1_gs4q7"]
+
+[resource]
+script = ExtResource("1_gs4q7")
+item_texture = ExtResource("1_grvtf")
+count = 20
+name = ""
+is_block = true
+atlas_id = 3
+atlas_position = Vector2i(10, 9)
+health = 0.0
