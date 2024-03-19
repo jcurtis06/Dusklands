@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://dhuey6wiwu1dk"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=4 format=3 uid="uid://dhuey6wiwu1dk"]
 
 [ext_resource type="Script" path="res://data/inventories/scripts/inventory.gd" id="1_vqea0"]
 [ext_resource type="Resource" uid="uid://clyxk5gl7h2gi" path="res://data/blocks/stone.tres" id="2_nquem"]
+[ext_resource type="Resource" uid="uid://bq1dlpwo2rnus" path="res://data/blocks/flower.tres" id="3_o6t54"]
 
 [resource]
 script = ExtResource("1_vqea0")
-slots = Array[Resource("res://data/blocks/scripts/block_data.gd")]([ExtResource("2_nquem"), null, null, null, null, null, null, null, null])
+slots = Array[Resource("res://data/blocks/scripts/block_data.gd")]([ExtResource("2_nquem"), ExtResource("3_o6t54"), null, null, null, null, null, null, null])

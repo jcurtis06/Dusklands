@@ -5,7 +5,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hb4po"]
 
 [node name="InventorySlot" type="Panel"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(8, 8)
 offset_right = 16.0
 offset_bottom = 16.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hb4po")

@@ -28,6 +28,7 @@ func physics_update(delta: float) -> void:
 	
 	if direction.length() > min_dist:
 		if pathfinding:
+			print("yessirrrrr")
 			pathfinding.set_destination(target_node.global_position)
 		else:
 			cb2d.velocity = direction.normalized() * speed

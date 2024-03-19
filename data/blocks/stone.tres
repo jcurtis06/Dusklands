@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="BlockData" load_steps=3 format=3 uid="uid://clyxk5gl7h2gi"]
 
-[ext_resource type="Texture2D" uid="uid://c63cp4yl0cj83" path="res://assets/blocks/blocks_tileset.png" id="1_jkr5a"]
+[ext_resource type="Texture2D" uid="uid://dxdxbrsfnqtw7" path="res://assets/items/stone.png" id="1_icimt"]
 [ext_resource type="Script" path="res://data/blocks/scripts/block_data.gd" id="1_uq7ol"]
 
 [resource]
 script = ExtResource("1_uq7ol")
-item_texture = ExtResource("1_jkr5a")
+item_texture = ExtResource("1_icimt")
 count = 1
 name = "Stone"
 is_block = true
-atlas_id = 1
-atlas_position = Vector2i(0, 0)
+atlas_id = 2
+atlas_position = Vector2i(29, 19)
 health = 0.0

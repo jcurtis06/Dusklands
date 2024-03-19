@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://entities/ai_states/attack.gd" id="9_pyexa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8pvvs"]
-radius = 7.0
+radius = 2.0
 
 [sub_resource type="Shader" id="Shader_urpfe"]
 code = "shader_type canvas_item;
