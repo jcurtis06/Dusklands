@@ -29,4 +29,5 @@ func remove_item(item: BlockData) -> void:
 		
 		if i != -1:
 			slots[i] = null
-			ui_refresh = true
+	
+	ui_refresh = true

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="BlockData" load_steps=2 format=3 uid="uid://bvp223l5umb1i"]
+
+[ext_resource type="Script" path="res://data/blocks/scripts/block_data.gd" id="2_027ae"]
+
+[resource]
+script = ExtResource("2_027ae")
+count = 1
+name = ""
+is_block = false
+atlas_id = 0
+atlas_position = Vector2i(0, 0)
+health = 0.0

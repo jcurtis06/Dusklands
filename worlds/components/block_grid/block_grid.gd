@@ -8,11 +8,16 @@ class_name BlockGrid
 ## - Value: BlockData
 var data_grid: Dictionary = {}
 
+func set_block_at_map(map_pos: Vector2i, block: BlockData, layer: int = 1) -> void:
+	set_cell(layer, map_pos, block.atlas_id, block.atlas_position)
+	print(map_pos)
+	
+	if layer != 0:
+		data_grid[map_pos] = block.duplicate()
+
 func set_block_at(pos: Vector2, block: BlockData) -> void:
 	var map_pos = local_to_map(pos)
-	set_cell(1, map_pos, block.atlas_id, block.atlas_position)
-	
-	data_grid[map_pos] = block.duplicate()
+	set_block_at_map(map_pos, block)
 
 func damage_block(pos: Vector2, amount: float) -> void:
 	var data = get_block_data(pos)
@@ -23,7 +28,6 @@ func damage_block(pos: Vector2, amount: float) -> void:
 	var new_health = data.health - amount
 	
 	if new_health <= 0:
-		# TODO: drop item
 		var dropped_item = dropped_item_tscn.instantiate() as DroppedItem
 		dropped_item.global_position = get_position_snapped(pos)
 		dropped_item.item = data

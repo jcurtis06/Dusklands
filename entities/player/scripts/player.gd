@@ -26,12 +26,18 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		if active_item == null || active_item.count <= 0:
 			return
+		if world.block_grid.get_block_data(get_global_mouse_position()):
+			return
 		
 		world.block_grid.set_block_at(get_global_mouse_position(), active_item)
 		hotbar.remove_item(active_item)
 	
 	# ANIMATIONS
 	_handle_animations()
+	
+	# MISC
+	if Input.is_action_just_pressed("ui_accept"):
+		print(global_position)
 
 func pickup_item(item: BlockData) -> void:
 	hotbar.add_item(item)
